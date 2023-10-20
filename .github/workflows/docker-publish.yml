@@ -28,10 +28,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-        with:
-          platforms: all
+      #- name: Set up QEMU
+      #  uses: docker/setup-qemu-action@v3
+      #  with:
+      #    platforms: all
         
       # Set up BuildKit Docker container builder to be able to build
       # multi-platform images and export cache
@@ -69,4 +69,4 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          platforms: linux/amd64
+          # platforms: linux/amd64
