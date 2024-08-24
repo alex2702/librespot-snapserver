@@ -6,7 +6,7 @@ set -euo pipefail
 
 if [ -e /etc/snapserver.conf ]; then
   # If a custom configuration exists, symlink it
-  ln -sf /etc/snapserver.conf  /usr/etc/snapserver.conf
+  ln -sf /etc/snapserver.conf  /etc/snapserver.conf
 else
   # Change snapserver source to Spotify only if no custom configuration is mounted
   credentials=""
@@ -14,7 +14,7 @@ else
     credentials="\&username=$USERNAME\&password=$PASSWORD"
   fi
 
-  sed -i "s,^source = .*,source = librespot:///librespot?name=Spotify\&devicename=$DEVICE_NAME\&bitrate=320\&volume=100$credentials," /usr/etc/snapserver.conf
+  sed -i "s,^source = .*,source = librespot:///librespot?name=Spotify\&devicename=$DEVICE_NAME\&bitrate=320\&volume=100$credentials," /etc/snapserver.conf
 fi
 
-exec snapserver -c /usr/etc/snapserver.conf
+exec snapserver -c /etc/snapserver.conf
